@@ -1,10 +1,12 @@
+locals {
+  tenant_dn = data.terraform_remote_state.prod-tenant.outputs.tenant_dn
+  vrf_dn    = data.terraform_remote_state.prod-tenant.outputs.vrf_dn
+}
+
 resource "aci_application_profile" "payment_services" {
-  tenant_dn  = 
-  name       = "demo_ap"
-  annotation = "tag"
-  description = "from terraform"
-  name_alias = "test_ap"
-  prio       = "level1"
+  tenant_dn   = local.tenant_dn
+  name        = "payment_services"
+  description = "Networks on payment_services block"
 }
 
 module "network-prod-fe-01" {
@@ -12,8 +14,8 @@ module "network-prod-fe-01" {
   version = "0.0.1"
 
   name      = "prod_net_front_01"
-  tenant_dn = aci_tenant.prod.id
-  vrf_dn    = aci_vrf.prod.id
+  tenant_dn = local.tenant_dn
+  vrf_dn    = local.vrf_dn
 
   type   = "L3"
   subnet = "192.168.1.1/24"
@@ -30,19 +32,11 @@ module "network-prod-fe-01" {
     },
     {
       pod_id          = "1"
-      port_type       = "pc"
-      leaves_id       = "1101"
-      port_id         = "ipg_n7700_l2"
+      port_type       = "port"
+      leaves_id       = "1102"
+      port_id         = "eth1/31"
       vlan_id         = "151"
-      switchport_type = "trunk"
-    },
-    {
-      pod_id          = "1"
-      port_type       = "vpc"
-      leaves_id       = "1101-1102"
-      port_id         = "ipg_server_001"
-      vlan_id         = "151"
-      switchport_type = "trunk"
+      switchport_type = "access"
     }
   ]
 }
