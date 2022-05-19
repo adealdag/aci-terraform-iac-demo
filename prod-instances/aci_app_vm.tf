@@ -28,7 +28,9 @@ resource "vsphere_folder" "folder" {
 # VM Instances
 #
 module "vm" {
-  source   = "github.com/adealdag/terraform-vsphere-vm-from-template?ref=v0.1.0"
+  # source   = "github.com/adealdag/terraform-vsphere-vm-from-template?ref=v0.1.0"
+  source   = "app.terraform.io/cisco-dcn-ecosystem/vm-from-template/vsphere"
+  version  = "0.1.0"
   for_each = var.vm_list
 
   vsphere_dc         = var.vm_location[each.value.vm_location_key].vsphere_dc
