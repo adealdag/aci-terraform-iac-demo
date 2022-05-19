@@ -5,7 +5,7 @@ locals {
 
 resource "aci_application_profile" "payment_services" {
   tenant_dn   = local.tenant_dn
-  name        = "payment_svc"
+  name        = "payment_services"
   description = "Networks on payment_services block"
 }
 
