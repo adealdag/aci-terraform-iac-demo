@@ -4,14 +4,14 @@ vm_location = {
     vsphere_cluster   = "HX-C1"
     vsphere_dc        = "MDR1"
     vsphere_ds        = "HX-DS01"
-    vsphere_vm_folder = "adealdag/tfc-demo"
+    vsphere_vm_folder = "adealdag/tfc-iac-demo"
   },
   "mlg1" = {
     domain_name       = "dcmdr.ciscolabs.com"
     vsphere_cluster   = "UCS-C1"
     vsphere_dc        = "MLG1"
     vsphere_ds        = "UCS-C1-DS01"
-    vsphere_vm_folder = "adealdag/tfc-demo"
+    vsphere_vm_folder = "adealdag/tfc-iac-demo"
   }
 }
 
