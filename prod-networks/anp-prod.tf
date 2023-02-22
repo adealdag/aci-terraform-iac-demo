@@ -42,20 +42,6 @@ module "network-prod-fe-01" {
   ]
 }
 
-module "network-prod-fe-02" {
-  source  = "app.terraform.io/cisco-dcn-ecosystem/network/aci"
-  version = "0.0.2"
-
-  name      = "prod_net_front_02"
-  tenant_dn = local.tenant_dn
-  vrf_dn    = local.vrf_dn
-  anp_dn    = aci_application_profile.payment_services.id
-
-  type   = "L3"
-  subnet = "192.168.12.1/24"
-  public = true
-}
-
 module "network-prod-be-01" {
   source  = "app.terraform.io/cisco-dcn-ecosystem/network/aci"
   version = "0.0.2"
