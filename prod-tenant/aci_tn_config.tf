@@ -1,6 +1,6 @@
 # Tenant
 resource "aci_tenant" "prod" {
-  name = "iac_prod_tn"
+  name = "iac_tn"
 }
 
 # VRF
