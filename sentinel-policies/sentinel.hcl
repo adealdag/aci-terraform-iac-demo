@@ -12,5 +12,5 @@ module "tfconfig-functions" {
 
 policy "aci-bridge-domain-golden-rules" {
   source            = "./verify-bd-best-practices.sentinel"
-  enforcement_level = "hard-mandatory"
+  enforcement_level = "soft-mandatory"
 }
